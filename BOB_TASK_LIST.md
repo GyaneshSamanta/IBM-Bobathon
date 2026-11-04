@@ -13,7 +13,7 @@ flowchart LR
     P3 --> P4["Phase 4\nDead-Man Telemetry & SOS\n(✅ Core Done)"]
     P4 --> P5["Phase 5\nwatsonx Agent Copilot\n(✅ Core Done)"]
     P5 --> P6["Phase 6\nQuad-Lingual UI & Leaflet\n(✅ Core Done)"]
-    P6 --> P7["Phase 7\nBob Fine-Tuning & Pitch\n(👉 Ready for Bob)"]
+    P6 --> P7["Phase 7\nBob Fine-Tuning & Pitch\n(✅ Verified)"]
 ```
 
 ---
@@ -32,7 +32,17 @@ flowchart LR
 
 ---
 
-## 🛠️ Next Steps with IBM Bob
+## ✅ Bob Verification Pass
+
+- `npm run build` clean (0 TypeScript errors); built app loads in headless Chrome, service worker registers, self-check reports 5/5 subsystems.
+- Shortest-distance baseline switched to Dijkstra so the dark shortcut is strictly shortest in all 8 corridors (Bellandur and HSR were previously returning the safe road).
+- `offlineStorage.ts` now exports `getNearbySanctuaries` and `getStorageQuota` (Task 2 spec).
+- Offline copilot detects all four spec threat scenarios (Kannada, Nepali, Hindi, English).
+- Demo panel exposes Trigger Deviation and the four one-click voice scenarios (Task 7 spec).
+- `verificationRunner.ts` now asserts IndexedDB, <35 ms routing with ≥90% lit, copilot, SMS URI and siren.
+- Added [`human/03_AIRPLANE_MODE_&_MOBILE_TESTING.md`](./human/03_AIRPLANE_MODE_&_MOBILE_TESTING.md) and `.bob/` config + rules.
+
+## 🛠️ Remaining (manual) Steps
 
 The functional engine is **85-90% built and verified with clean production builds**.
 You can now open **IBM Bob** to do fine-tuning:
