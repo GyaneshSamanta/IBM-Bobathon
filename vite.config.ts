@@ -6,20 +6,9 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 5173,
-    host: true,
-    proxy: {
-      '/api/watsonx': {
-        target: 'https://us-south.ml.cloud.ibm.com',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api\/watsonx/, ''),
-        secure: true,
-      },
-      '/api/ibm-iam': {
-        target: 'https://iam.cloud.ibm.com',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api\/ibm-iam/, ''),
-        secure: true,
-      }
-    }
-  }
+    host: '127.0.0.1',
+  },
+  preview: {
+    host: '127.0.0.1',
+  },
 })

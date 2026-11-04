@@ -1,7 +1,7 @@
 {
   "name": "KAAVALU - Safe Transit Companion",
   "short_name": "KAAVALU",
-  "description": "Offline-First Safe Transit Companion for Bengaluru powered by IBM watsonx.ai",
+  "description": "Offline-First Safe Transit Companion for Bengaluru built for night-shift workers",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0B0F17",

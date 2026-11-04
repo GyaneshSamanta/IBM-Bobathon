@@ -30,7 +30,7 @@ self.addEventListener('activate', (event) => {
 
 // Cache-first strategy with network fallback for assets, stale-while-revalidate for html
 self.addEventListener('fetch', (event) => {
-  // Ignore non-GET or cross-origin API calls like watsonx
+  // Ignore non-GET or API calls
   if (event.request.method !== 'GET' || event.request.url.includes('/api/')) {
     return;
   }
