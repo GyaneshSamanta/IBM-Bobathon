@@ -18,8 +18,8 @@ export function evaluateOfflineCopilot(
 
   // Detection logic across 4 languages
   const isVehicle = /ಆಟೋ|ಕಾರು|गाडी|ऑटो|कार|auto|cab|vehicle|trailing|tailing/.test(text);
-  const isDark = /ಕತ್ತಲೆ|ಬೆಳಕಿಲ್ಲ|अँध्यारो|अंधेरा|dark|unlit|lights off|pitch/.test(text);
-  const isPursuit = /ಹಿಂಬಾಲಿಸು|पछ्याइ|पीछे|following|chasing|stalking|behind me/.test(text);
+  const isDark = /ಕತ್ತಲೆ|ಬೆಳಕಿಲ್ಲ|अँध्यारो|अंधेरा|dark|unlit|lights off|turned off|pitch/.test(text);
+  const isPursuit = /ಹಿಂಬಾಲಿಸು|ಹಿಂದೆ|पछ्याइ|पीछे|following|chasing|stalking|trailing|tailing|behind me/.test(text);
   const isCrowd = /ಹುಡುಗರು|ಗುಂಪು|केटाहरू|लड़के|भीड़|men|group|loitering/.test(text);
 
   if (isPursuit || (isVehicle && isDark)) {
