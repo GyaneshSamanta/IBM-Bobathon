@@ -16,6 +16,13 @@ import {
 } from 'lucide-react';
 import { LanguageCode } from '../i18n/translations';
 
+const VOICE_SCENARIOS: { lang: LanguageCode; label: string; text: string }[] = [
+  { lang: 'kn', label: 'ಕನ್ನಡ', text: 'ಒಂದು ಆಟೋ ನನ್ನ ಹಿಂದೆ ತುಂಬಾ ನಿಧಾನವಾಗಿ ಬರ್ತಾ ಇದೆ, ಭಯ ಆಗ್ತಿದೆ.' },
+  { lang: 'ne', label: 'नेपाली', text: 'एउटा केटाले मलाई पछ्याइरहेको छ, बाटो धेरै अँध्यारो छ।' },
+  { lang: 'hi', label: 'हिंदी', text: 'गली में लाइट बंद है और 3 लड़के खड़े हैं।' },
+  { lang: 'en', label: 'English', text: 'Suspicious auto trailing me with headlights turned off.' },
+];
+
 interface DemoControlPanelProps {
   isOnline: boolean;
   onToggleAirplaneMode: () => void;
@@ -44,12 +51,14 @@ export const DemoControlPanel: React.FC<DemoControlPanelProps> = ({
   onToggleSimulatedWalk,
   onResetPosition,
   onTriggerStagnation,
+  onTriggerDeviation,
   onToggleCovert,
   isCovertActive,
   isSirenActive,
   onToggleSiren,
   isPhoneFrame,
   onTogglePhoneFrame,
+  onTriggerScenario,
   isAutoPilotRunning,
   autoPilotStageText,
   onStartAutoPilot,
@@ -157,14 +166,39 @@ export const DemoControlPanel: React.FC<DemoControlPanelProps> = ({
             </button>
           </div>
 
+          {/* One-Click Voice Threat Scenarios */}
+          <div>
+            <span className="text-[11px] text-carbon-textSecondary block mb-1.5">Voice threat scenarios (one click)</span>
+            <div className="grid grid-cols-4 gap-2">
+              {VOICE_SCENARIOS.map((sc) => (
+                <button
+                  key={sc.lang}
+                  onClick={() => onTriggerScenario(sc.text, sc.lang)}
+                  title={sc.text}
+                  className="p-2 rounded-xl bg-carbon-layer02 hover:bg-carbon-layer03 border border-white/[0.06] text-carbon-textSecondary hover:text-carbon-textPrimary text-xs font-medium transition-all active:scale-95"
+                >
+                  {sc.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
           {/* Secondary Controls */}
-          <div className="flex items-center justify-between pt-1 text-xs text-carbon-textSecondary border-t border-carbon-borderSubtle/60">
+          <div className="flex flex-wrap gap-y-2 items-center justify-between pt-1 text-xs text-carbon-textSecondary border-t border-carbon-borderSubtle/60">
             <button
               onClick={onTriggerStagnation}
               className="hover:text-carbon-textPrimary transition-colors flex items-center space-x-1"
             >
               <AlertCircle className="w-3 h-3 text-carbon-yellow" />
               <span>Test Stopped Walk Alert</span>
+            </button>
+
+            <button
+              onClick={onTriggerDeviation}
+              className="hover:text-carbon-textPrimary transition-colors flex items-center space-x-1"
+            >
+              <AlertCircle className="w-3 h-3 text-carbon-red" />
+              <span>Trigger Deviation</span>
             </button>
 
             <button
