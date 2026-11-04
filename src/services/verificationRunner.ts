@@ -1,6 +1,6 @@
 import { calculateCorridorRoutes } from './safetyRouter';
 import { BENGALURU_CORRIDORS } from '../data/bengaluruCorridors';
-import { evaluateOfflineCopilot } from './mockWatsonxCopilot';
+import { evaluateOfflineCopilot } from './offlineCopilot';
 import { formatDistressMessage } from './emergencyDispatcher';
 import { getAllCorridors, getNearbySanctuaries, getStorageQuota } from './offlineStorage';
 import { sirenService } from './audioSiren';
@@ -61,7 +61,7 @@ export async function runSentinelSelfCheck() {
       `%c[KAAVALU SENTINEL SELF-CHECK]%c\n` +
       `${mark(storageOk)} IndexedDB Local Cache: ${storageOk ? 'READY' : 'FAILED'} (${stored.length} corridors, ${quota.formattedUsed}, ${nearby.length} havens near Whitefield)\n` +
       `${mark(routerOk)} Client-Side A* Safety Router: ${routerOk ? 'PASSED' : 'FAILED'} (${routeMs.toFixed(1)}ms, safe ${safeRoute.litPercentage}% lit vs shortcut ${shortestRoute.litPercentage}%)\n` +
-      `${mark(copilotOk)} watsonx Agentic Copilot: ${copilotOk ? 'READY' : 'FAILED'} (Fallback: ${copilotTest.threatLevel} / ${copilotTest.threatCategory})\n` +
+      `${mark(copilotOk)} Offline Threat Copilot: ${copilotOk ? 'READY' : 'FAILED'} (${copilotTest.threatLevel} / ${copilotTest.threatCategory})\n` +
       `${mark(smsOk)} Zero-Cost SMS URI Protocol: ${smsOk ? 'READY' : 'FAILED'} (${smsSample.length} chars payload)\n` +
       `${mark(sirenOk)} Web Audio Siren Synthesizer: ${sirenOk ? 'READY' : 'UNSUPPORTED'}\n` +
       `${passed === 5 ? 'All 5 Sentinel Subsystems Operational.' : `${passed}/5 Sentinel Subsystems Operational.`} (${totalMs}ms) Built for IBM Bobathon.`,

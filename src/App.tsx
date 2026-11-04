@@ -19,7 +19,7 @@ import { LanguageCode, TRANSLATIONS } from './i18n/translations';
 import { initOfflineStorage } from './services/offlineStorage';
 import { calculateCorridorRoutes, calculateSanctuaryDiversionRoute } from './services/safetyRouter';
 import { telemetryEngine } from './services/telemetryEngine';
-import { assessThreatSituation } from './services/watsonxService';
+import { evaluateOfflineCopilot } from './services/offlineCopilot';
 import { dispatchNativeSms, shareDistressAlert } from './services/emergencyDispatcher';
 import { sirenService } from './services/audioSiren';
 import { launchSafeArrivalConfetti } from './utils/confetti';
@@ -206,7 +206,7 @@ export const App: React.FC = () => {
     };
 
     try {
-      const result = await assessThreatSituation(text, context, isOnline && !isNetworkFailed);
+      const result = evaluateOfflineCopilot(text, context);
       setLatestAssessment(result);
 
       if ((result.threatLevel === 'HIGH' || result.threatLevel === 'CRITICAL') && activeCorridor.sanctuaries.length > 0) {
