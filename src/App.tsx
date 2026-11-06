@@ -243,7 +243,7 @@ export const App: React.FC = () => {
 
   const handleDispatchSms = () => {
     const incidentData = {
-      userName: 'Priya S.',
+      userName: 'A KAAVALU user',
       phoneNumber: '112',
       location: userPosition || { lat: activeCorridor.center.lat, lng: activeCorridor.center.lng },
       corridorName: activeCorridor.name,
@@ -258,7 +258,7 @@ export const App: React.FC = () => {
 
   const handleShareDispatch = (brief: string) => {
     const incidentData = {
-      userName: 'Priya S.',
+      userName: 'A KAAVALU user',
       location: userPosition || { lat: activeCorridor.center.lat, lng: activeCorridor.center.lng },
       corridorName: activeCorridor.name,
       threatDetails: brief,
