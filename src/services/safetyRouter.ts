@@ -128,8 +128,9 @@ function runAStar(
         // Shortest-distance mode is plain Dijkstra (h = 0): declared segment lengths can be
         // shorter than straight-line distance, which would make the haversine heuristic inadmissible.
         const target = nodeMap.get(edge.targetNodeId);
+        // 0.55 is the cheapest possible per-metre cost (sanctuary discount), so the heuristic never overestimates.
         const heuristic = target && mode === 'safety_weighted'
-          ? calculateHaversineDistanceMeters({ lat: target.lat, lng: target.lng }, { lat: targetNode.lat, lng: targetNode.lng })
+          ? 0.55 * calculateHaversineDistanceMeters({ lat: target.lat, lng: target.lng }, { lat: targetNode.lat, lng: targetNode.lng })
           : 0;
 
         frontier.enqueue(edge.targetNodeId, newCost + heuristic);
@@ -258,8 +259,8 @@ export function calculateCorridorRoutes(
     litPercentage: shortestMetrics.litPercentage,
     safetyScore: shortestMetrics.safetyScore,
     sanctuariesAlongRoute: shortestSanctuaries,
-    whyRecommended: `Shortest physical distance (${shortestResult.totalDistance}m, saves ~8 mins), but cuts through pitch dark unlit alleys.`,
-    whyAvoid: `Avoid at night: 0 streetlights, high isolation risk.`,
+    whyRecommended: `Shortest physical distance (${shortestResult.totalDistance}m, saves ~${Math.max(0, safeMetrics.estimatedMinutes - shortestMetrics.estimatedMinutes)} mins), but only ${shortestMetrics.litPercentage}% of it is lit.`,
+    whyAvoid: `Avoid at night: ${100 - shortestMetrics.litPercentage}% of this route has no street lighting, higher isolation risk.`,
     color: '#DA1E28',
   };
 
