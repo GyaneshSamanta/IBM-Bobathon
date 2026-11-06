@@ -1,64 +1,71 @@
-# 🏆 IBM Bobathon: Build for Bengaluru — Official Submission
+# IBM Bobathon: Build for Bengaluru — Submission
 
-> **Challenge:** IBM Bobathon: Build for Bengaluru  
-> **Theme:** Theme 3: Safer Communities, Stronger Futures  
-> **Project Name:** KAAVALU (ಕಾವಲು) — Offline-First Night Transit Guardian  
-> **Built With:** IBM Bob & IBM watsonx.ai (Granite-3-8b-instruct)  
+> **Theme:** Theme 3: Safer Communities, Stronger Futures
+> **Project:** KAAVALU (ಕಾವಲು) — an offline-first night-walk companion
+> **Built with:** IBM Bob
+> **Repository:** https://github.com/GyaneshSamanta/IBM-Bobathon
 
----
-
-## 1. Project Overview & Elevator Pitch
-
-**KAAVALU (ಕಾವಲು)** (*Kannada for 'The Sentinel' or 'Vigil'*) is an offline-first safe night transit companion engineered for women walking home after dark in Bengaluru. 
-
-While conventional navigation apps fail when cellular connectivity drops in flyover underpasses, unlit bottlenecks, and back-alleys, KAAVALU operates on a **70/30 Hybrid Architecture**:
-* **70% Deterministic Offline Core:** Runs 100% locally on device with zero cloud reliance. Evaluates OpenStreetMap street grids and lighting infrastructure (`lit=yes`, active commercial frontage, sanctuary proximity) using custom **Safety-Weighted A\*** pathfinding. Automatically compares routes against Dijkstra's shortest path to reject dangerous unlit shortcuts. Features dead-man stagnation telemetry, zero-cost native carrier SMS dispatch, and a client-side Web Audio pulsing siren (105 dB).
-* **30% Agentic AI Copilot (IBM watsonx.ai Granite):** When online, an IBM Granite-powered agent interprets natural-language voice distress in **Kannada (ಕನ್ನಡ), English, Hindi (हिंदी), and Nepali (नेपाली)**, dynamically rerouting commuters to verified 24/7 sanctuaries (petrol forecourts, 24/7 pharmacies, police kiosks, emergency hospitals) with structured situational dispatch briefs.
-* **₹0 Offline Neural Fallback:** Even with zero connectivity and zero credit cards, Kaavalu's embedded offline neural classifier provides immediate, deterministic threat evaluation and haven diversion without cloud latency.
+The full write-up, with the origin story, rubric mapping, limitations and roadmap, is in the [README](../README.md). This page is the short form.
 
 ---
 
-## 2. The Problem: Who Experiences It & What Needs to Improve?
+## 1. What it is
 
-In Bengaluru, over 1.8 lakh women work evening shifts in healthcare, BPOs, retail, and tech campuses. When leaving transit nodes like Namma Metro after 9 PM, commuters face an acute dilemma:
-1. **The Dangerous Distance Trade-off:** Standard GPS engines optimize purely for physical distance or vehicular traffic. In residential layouts (Indiranagar, Whitefield, Bellandur, Koramangala), this repeatedly routes pedestrians into dark, deserted stormwater culverts or unlit back-alleys to save 8–10 minutes.
-2. **Cellular Blackouts in Critical Bottlenecks:** Under elevated flyovers (e.g. Silk Board, Marathahalli, Bellandur ORR), cellular coverage routinely collapses to "No Service" or 2G. Cloud-dependent SOS apps freeze and fail to load maps precisely when commuters feel most vulnerable.
-3. **Panic Buttons Trigger Escalation:** Traditional panic buttons either produce false alarms or cause sudden panic without offering a tangible physical place of refuge.
+KAAVALU is an installable web app (PWA) that picks a walking route for how well lit it is and how close it is to a place that is open and staffed, instead of how short it is. It keeps working with no signal.
 
----
+It was inspired by a momo vendor and a shoe-shop worker who both said the trip home after a late shift is the part of the day they dread. They decide whether it is safe by looking at their shift hours and the day of the week, then guessing.
 
-## 3. The Prototype: How It Solves the Problem
+## 2. The problem
 
-KAAVALU provides a production-ready Progressive Web App (PWA) with:
-* **8 Street-Conforming Bengaluru Corridors:** Spanning East, South, North, and Central Bengaluru with realistic turns along actual roads (Indiranagar, Whitefield, Bellandur, Koramangala, Electronic City, HSR Layout, MG Road, Manyata Tech Park).
-* **Safety-Weighted A\* Algorithm:** Mathematically penalizes unlit segments and dirt trails by up to `4.8x` while discounting segments adjacent to 24/7 staffed safe havens.
-* **Sentinel Turn-by-Turn HUD:** Seamless heads-up guidance that alerts the commuter to approaching sanctuaries (HP/Shell/BPCL fuel stations, Apollo/MedPlus pharmacies, Bengaluru City Police Chowkis) without requiring anxious phone-staring.
-* **Unified Offline AI Transformation:** If cellular signal drops to 0, SentinelHUD turns crimson, announces *'0 Signal • Offline Edge AI Active'*, and reroutes directly to the nearest staffed forecourt.
-* **Built-in 45s Guided Pitch Demo:** With auto-scroll and spotlight rings that demonstrate search, routing, live walk, cellular blackout, and safe arrival in 5 crisp stages.
+People who work late in retail, street food and HoReCa leave when the shop closes, without a cab policy. Maps apps choose the shortest route, which at night is often the unlit lane or underpass. Signal drops under flyovers, exactly where cloud-only safety apps stop working.
 
----
+## 3. What is built
 
-## 4. The Bob Story: How IBM Bob Built This
+* **Six corridors from real OpenStreetMap data:** Indiranagar, Whitefield, Bellandur, Koramangala, HSR Layout and MG Road. Generated by `npm run build:data` from street geometry, `lit=*` tags and haven locations.
+* **Two routes, compared:** the shortest walk (Dijkstra) and a safety-weighted walk (A\*), with distance, time, lit percentage and havens on each.
+* **Offline by design:** corridors are stored in IndexedDB; routing, a rule-based assistant in English, Kannada, Hindi and Nepali, stop and deviation detection, the siren and the SMS link all run on the device.
+* **Dead-man telemetry:** a stop of three minutes or a 35 m deviation starts a 30-second countdown, then the siren.
+* **SOS:** opens the phone's own SMS app with location, nearest haven and battery level. The user presses send.
+* **A 45-second guided demo** (Pitch button) and a startup self-check that verifies five subsystems.
 
-IBM Bob served as our central architectural pair programmer from day one:
-* **Architecture Planning:** Bob designed the 70/30 architecture, ensuring that 70% of spatial telemetry and routing math runs strictly client-side on device using IndexedDB, reserving watsonx.ai for agentic triage.
-* **IBM Carbon Design System Adaptation:** Bob mapped Carbon v11 tokens into modern squircle geometry (`rounded-2xl`, soft midnight Gray 100 palette `#0c1017`, high-contrast text `#f8fafc`, and glanceable pills) for glare-free readability.
-* **Spatial Algorithm Implementation:** Bob authored and calibrated the graph routing equations in `src/services/safetyRouter.ts`, ensuring Dijkstra accurately finds the dark shortcut while Safety A* selects the safe lit avenue.
-* **Resilience Engineering:** Bob implemented the offline neural classifier fallback in `watsonxService.ts`, allowing judges and evaluators to test complete agentic reasoning with ₹0 cost and zero cloud configuration.
+## 4. Measured impact
 
----
+| Measure | Value |
+|---|---|
+| Unlit walking, shortest route (six corridors) | 4,589 m |
+| Unlit walking, safe route | 805 m |
+| **Reduction** | **82%** |
+| Average extra walking time | about 4.5 min |
 
-## 5. Measurable Impact
+The figures come from the generated data, not from a survey or field trial. Where OpenStreetMap has no `lit=*` tag (no segment on Koramangala is tagged, and only 5% on Whitefield), lighting is assumed by rule: main roads and mapped sidewalks are lit, everything else is not. The numbers are only as good as that assumption.
 
-* **40% Reduction in Unlit Street Exposure:** Compared to standard shortest-distance navigation algorithms.
-* **100% Operational Uptime in Dead Zones:** Full offline routing, dead-man stagnation alarms, and sanctuary navigation in complete Airplane Mode.
-* **Verified Human Protection:** Directs commuters to staffed physical shelters with armed guards and CCTV, bridging digital alerts with physical safety.
-* **₹0 Marginal Cost:** Operates client-side with native carrier SMS, making municipal scale feasible across BBMP's 8 zones.
+## 5. How Bob was used
 
----
+* Planned the architecture and wrote the first routing engine, UI and offline storage.
+* Helped audit the work and find a real bug: the "shortest" route used a heuristic that was not admissible against the hand-made data, so it sometimes returned the safe road. Fixed by using plain Dijkstra for the baseline and an admissible A\* for the safe route.
+* Helped replace the hand-made data with an OpenStreetMap generator and a validator that checks the shortcut is shorter and darker than the safe route, and that no segment is shorter than its straight-line distance.
+* Helped clean the repository and keep the commit trail readable.
 
-## 6. Privacy & Human Review in Safety Design
+## 6. Privacy and human review
 
-* **Zero Cloud Tracking:** Commuter coordinates remain strictly inside browser memory/IndexedDB and are never stored in a central surveillance database.
-* **Covert OLED Black-Screen Mode:** Allows commuters to keep navigation active while disguising the screen as powered off to prevent drawing attention in dimly lit areas.
-* **Human Haven Verification:** Safe havens are restricted to verified commercial and civil entities (company-operated petrol bunks, hospital emergency triage, police posts) with active staff on duty.
+* Location stays on the device. There is no account, no server and no analytics.
+* SOS never sends anything by itself. The user decides whether to send.
+* Safe havens are limited to police stations and places that OpenStreetMap explicitly tags as 24/7 or emergency-capable. Only Indiranagar (2 havens) and Whitefield (1) have one within 85 m of the route; the other four corridors have none. That is deliberate: a short list of places that can be trusted is better than a long one that cannot.
+* A person should review any routing change before it reaches users. The corridors are a prototype, not a certified safety product.
+
+## 7. Limitations
+
+* Lighting data is thin and partly assumed (see section 4).
+* Map tiles come from OpenStreetMap and are not cached, so with no signal the background may be blank while the route and markers still show.
+* Fonts load from Google Fonts.
+* The assistant is rule-based, not a language model.
+* Six corridors in Bengaluru only. Electronic City and Manyata were tried and dropped because OpenStreetMap shows no lit/unlit contrast there.
+* No field testing with real users yet.
+
+## 8. What's next
+
+1. Cache map tiles for offline use.
+2. Shift-aware advice using closing time and day of the week, so Friday night gets a different answer from Tuesday.
+3. Crowd-verified lighting and haven check-ins.
+4. IBM watsonx for natural-language help and summarising community reports, behind an explicit opt-in. **This is future scope and is not part of the current build.**
+5. Testing with the people who inspired it: vendors and shop workers.
