@@ -1,0 +1,212 @@
+[
+  {
+    "id": "indiranagar-defence-colony",
+    "name": "Indiranagar Metro to Defence Colony",
+    "nameKn": "ಇಂದಿರಾನಗರ ಮೆಟ್ರೋ ಇಂದ ಡಿಫೆನ್ಸ್ ಕಾಲೋನಿ",
+    "nameHi": "इंदिरानगर मेट्रो से डिफेंस कॉलोनी",
+    "nameNe": "इन्दिरानगर मेट्रोबाट डिफेन्स कलोनी",
+    "area": "Central-East Bengaluru (Indiranagar)",
+    "description": "Arterial shopping corridor connecting CMH Road metro station with residential avenues via 100ft Road.",
+    "center": {
+      "lat": 12.9745,
+      "lng": 77.645
+    },
+    "zoom": 15,
+    "publicTransit": {
+      "lineName": "Metro Feeder MF-1",
+      "vehicleType": "Metro Feeder",
+      "boardingStop": "Indiranagar Metro Gate 1",
+      "alightingStop": "100ft Rd 12th Main",
+      "departureFrequencyText": "Every 8 mins",
+      "rideDurationMinutes": 4,
+      "walkToStopMinutes": 1,
+      "walkFromStopMinutes": 2,
+      "safetyRating": "High • Electric feeder bus with CCTV"
+    },
+    "start": {
+      "name": "Indiranagar Metro Gate 1",
+      "lat": 12.9784,
+      "lng": 77.6408
+    },
+    "end": {
+      "name": "Defence Colony Park Avenue",
+      "lat": 12.971,
+      "lng": 77.6495
+    }
+  },
+  {
+    "id": "whitefield-metro-nallurahalli",
+    "name": "Kadugodi Metro to Nallurahalli Gate",
+    "nameKn": "ಕಾಡುಗೋಡಿ ಮೆಟ್ರೋ ಇಂದ ನಲ್ಲೂರಹಳ್ಳಿ ಗೇಟ್",
+    "nameHi": "काडुगोडी मेट्रो से नल्लूरहल्ली गेट",
+    "nameNe": "काडुगोडी मेट्रोबाट नल्लूरहल्ली गेट",
+    "area": "East Bengaluru (Whitefield IT Hub)",
+    "description": "Arterial commute connecting Kadugodi Whitefield Metro to residential layouts along Borewell Road.",
+    "center": {
+      "lat": 12.9705,
+      "lng": 77.7485
+    },
+    "zoom": 15,
+    "publicTransit": {
+      "lineName": "BMTC Bus 335-E",
+      "vehicleType": "BMTC Bus",
+      "boardingStop": "Kadugodi Metro Bay 2",
+      "alightingStop": "Nallurahalli Junction",
+      "departureFrequencyText": "Every 7 mins",
+      "rideDurationMinutes": 6,
+      "walkToStopMinutes": 1,
+      "walkFromStopMinutes": 3,
+      "safetyRating": "High • CCTV & Conductor on board"
+    },
+    "start": {
+      "name": "Kadugodi Metro Exit B",
+      "lat": 12.9754,
+      "lng": 77.755
+    },
+    "end": {
+      "name": "Nallurahalli Lake View Gate",
+      "lat": 12.9642,
+      "lng": 77.742
+    }
+  },
+  {
+    "id": "bellandur-orr-greenglen",
+    "name": "Ecospace Skywalk to Green Glen Layout",
+    "nameKn": "ಇಕೋಸ್ಪೇಸ್ ಇಂದ ಗ್ರೀನ್ ಗ್ಲೆನ್ ಲೇಔಟ್",
+    "nameHi": "इकोस्पेस से ग्रीन ग्लेन लेआउट",
+    "nameNe": "इकोस्पेसबाट ग्रीन ग्लेन लेआउट",
+    "area": "South-East Bengaluru (Bellandur ORR)",
+    "description": "Tech corridor connecting Outer Ring Road skywalk to residential societies via illuminated service roads.",
+    "center": {
+      "lat": 12.9238,
+      "lng": 77.6772
+    },
+    "zoom": 15,
+    "publicTransit": {
+      "lineName": "BMTC Bus 500-D",
+      "vehicleType": "BMTC Bus",
+      "boardingStop": "Ecospace Skywalk Bus Bay",
+      "alightingStop": "Green Glen Junction",
+      "departureFrequencyText": "Every 5 mins",
+      "rideDurationMinutes": 5,
+      "walkToStopMinutes": 1,
+      "walkFromStopMinutes": 2,
+      "safetyRating": "High • 24/7 ORR bus with CCTV"
+    },
+    "start": {
+      "name": "Ecospace Skywalk Terminal",
+      "lat": 12.9265,
+      "lng": 77.683
+    },
+    "end": {
+      "name": "Green Glen Layout Gate 1",
+      "lat": 12.9212,
+      "lng": 77.6715
+    }
+  },
+  {
+    "id": "koramangala-sonyworld-5thblock",
+    "name": "Sony World Junction to 5th Block",
+    "nameKn": "ಕೋರಮಂಗಲ ಸೋನಿ ವರ್ಲ್ಡ್ ಇಂದ 5ನೇ ಬ್ಲಾಕ್",
+    "nameHi": "कोरमंगला सोनी वर्ल्ड से 5th ब्लॉक",
+    "nameNe": "कोरामङ्गला सोनी वल्डबाट ५th ब्लक",
+    "area": "South Bengaluru (Koramangala Hub)",
+    "description": "High-traffic night shift corridor connecting 80ft Road commercial hub with residential layouts.",
+    "center": {
+      "lat": 12.9345,
+      "lng": 77.6255
+    },
+    "zoom": 15,
+    "publicTransit": {
+      "lineName": "BMTC Bus 340",
+      "vehicleType": "BMTC Bus",
+      "boardingStop": "Sony World Signal Bus Stop",
+      "alightingStop": "Koramangala 5th Block Post",
+      "departureFrequencyText": "Every 8 mins",
+      "rideDurationMinutes": 4,
+      "walkToStopMinutes": 1,
+      "walkFromStopMinutes": 2,
+      "safetyRating": "High • 24/7 commercial route with streetlights"
+    },
+    "start": {
+      "name": "Sony World Junction Crossing",
+      "lat": 12.938,
+      "lng": 77.622
+    },
+    "end": {
+      "name": "Koramangala 5th Block Gate",
+      "lat": 12.9315,
+      "lng": 77.6295
+    }
+  },
+  {
+    "id": "hsr-bda-sector1",
+    "name": "HSR BDA Complex to 27th Main Sector 1",
+    "nameKn": "ಎಚ್‌ಎಸ್‌ಆರ್ ಬಿಡಿಎ ಕಾಂಪ್ಲೆಕ್ಸ್ ಇಂದ 27ನೇ ಮುಖ್ಯರಸ್ತೆ",
+    "nameHi": "एचएसआर बीडीए कॉम्प्लेक्स से 27वीं मेन सेक्टर 1",
+    "nameNe": "एचएसआर बीडीए कम्प्लेक्सबाट २७औं मेन सेक्टर १",
+    "area": "South-East Bengaluru (HSR Layout)",
+    "description": "High-visibility corridor linking BDA commercial square with residential societies along 27th Main high street.",
+    "center": {
+      "lat": 12.914,
+      "lng": 77.645
+    },
+    "zoom": 15,
+    "publicTransit": {
+      "lineName": "BMTC Bus 500-A",
+      "vehicleType": "BMTC Bus",
+      "boardingStop": "HSR BDA Complex Bus Bay",
+      "alightingStop": "27th Main 13th Cross",
+      "departureFrequencyText": "Every 6 mins",
+      "rideDurationMinutes": 5,
+      "walkToStopMinutes": 1,
+      "walkFromStopMinutes": 2,
+      "safetyRating": "High • 24/7 lit commercial avenue"
+    },
+    "start": {
+      "name": "HSR BDA Complex 14th Main",
+      "lat": 12.9115,
+      "lng": 77.6385
+    },
+    "end": {
+      "name": "27th Main Sector 1 Park",
+      "lat": 12.9168,
+      "lng": 77.652
+    }
+  },
+  {
+    "id": "mgroad-churchstreet-residency",
+    "name": "MG Road Metro to Residency Road Galleria",
+    "nameKn": "ಎಂಜಿ ರಸ್ತೆ ಮೆಟ್ರೋ ಇಂದ ರೆಸಿಡೆನ್ಸಿ ರಸ್ತೆ",
+    "nameHi": "एमजी रोड मेट्रो से रेजीडेंसी रोड",
+    "nameNe": "एमजी रोड मेट्रोबाट रेसिडेन्सी रोड",
+    "area": "Central Bengaluru (MG Road & Brigade Road CBD)",
+    "description": "Central pedestrian precinct linking Namma Metro with commercial towers along vibrant illuminated boulevards.",
+    "center": {
+      "lat": 12.973,
+      "lng": 77.608
+    },
+    "zoom": 16,
+    "publicTransit": {
+      "lineName": "Metro Purple Line / G-2",
+      "vehicleType": "Metro Feeder",
+      "boardingStop": "MG Road Metro Station Gate 2",
+      "alightingStop": "Brigade Road Junction",
+      "departureFrequencyText": "Every 4 mins",
+      "rideDurationMinutes": 3,
+      "walkToStopMinutes": 1,
+      "walkFromStopMinutes": 2,
+      "safetyRating": "Highest • Continuous CCTV surveillance & foot patrols"
+    },
+    "start": {
+      "name": "MG Road Metro Gate 2",
+      "lat": 12.9755,
+      "lng": 77.6065
+    },
+    "end": {
+      "name": "Residency Road Galleria",
+      "lat": 12.9698,
+      "lng": 77.6098
+    }
+  }
+]

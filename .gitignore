@@ -22,3 +22,6 @@ npm-debug.log*
 
 # Bob local temp files
 .bob/tmp/
+
+# Generated-data cache (raw Overpass responses)
+scripts/.cache/
