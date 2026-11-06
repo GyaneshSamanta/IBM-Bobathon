@@ -337,9 +337,9 @@ export const App: React.FC = () => {
         setSimulatedFromText('');
         setSimulatedToText('');
 
-        animateTyping('Indiranagar • Indiranagar Metro Gate 1', (val) => setSimulatedFromText(val), () => {
+        animateTyping('Indiranagar Metro Gate 1', (val) => setSimulatedFromText(val), () => {
           setTimeout(() => {
-            animateTyping('Indiranagar • Defence Colony Park Ave', (val) => setSimulatedToText(val), () => {
+            animateTyping('Defence Colony', (val) => setSimulatedToText(val), () => {
               setDemoShowRoutes(true);
               sirenService.playRadarPing();
             });

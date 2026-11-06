@@ -43,10 +43,8 @@ export const SearchRouteBar: React.FC<SearchRouteBarProps> = ({
     if (corridor.id.includes('whitefield')) return 'Whitefield';
     if (corridor.id.includes('bellandur')) return 'Bellandur';
     if (corridor.id.includes('koramangala')) return 'Koramangala';
-    if (corridor.id.includes('electronic-city')) return 'E-City';
     if (corridor.id.includes('hsr')) return 'HSR Layout';
     if (corridor.id.includes('mgroad')) return 'MG Road';
-    if (corridor.id.includes('manyata')) return 'Manyata';
     return corridor.name.split(' ')[0];
   };
 
