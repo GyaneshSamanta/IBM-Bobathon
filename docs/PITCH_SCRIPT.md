@@ -1,113 +1,79 @@
-# 🏆 KAAVALU (ಕಾವಲು) — Winning Hackathon Pitch Script
+# KAAVALU (ಕಾವಲು) — Pitch Script
 
-> **Challenge:** IBM Bobathon: Build for Bengaluru  
-> **Theme:** Theme 3: Safer Communities, Stronger Futures  
-> **Target Timing:** 2 Minutes 30 Seconds  
-> **Synchronized With:** 45-Second Built-in Guided Demo with Auto-Scroll & Spotlights  
+> **Challenge:** IBM Bobathon: Build for Bengaluru
+> **Theme:** Theme 3: Safer Communities, Stronger Futures
+> **Target timing:** 2 minutes 30 seconds
+> **Synchronised with:** the 45-second built-in guided demo (Pitch button)
+
+All figures below come from the generated data in `src/data/bengaluruCorridors.ts` and the README. watsonx is future scope only and is not part of the build. Do not claim it.
 
 ---
 
-## ⏱️ Pitch Timeline Overview
+## Timeline
 
-| Timestamp | Phase | What Happens on Screen | Speaker Key Message |
+| Timestamp | Phase | On screen | Key message |
 | :--- | :--- | :--- | :--- |
-| **0:00 – 0:30** | The Bengaluru Problem | App landing screen in Midnight Charcoal | The 8-minute vs 17-minute night transit dilemma |
-| **0:30 – 0:50** | Search & Safety A* (Demo 1-2/5) | Auto-types Origin & Destination; Plots routes | Safety-Weighted A* rejects dark alley shortcut |
-| **0:50 – 1:20** | Live Walk & 0-Signal (Demo 3-4/5) | SentinelHUD guides; 0 Signal outage simulated | 100% offline edge resilience; Haven rerouting |
-| **1:20 – 1:45** | Haven Arrival (Demo 5/5) | Arrives at HP Haven; Confetti explodes | Real physical human safety network |
-| **1:45 – 2:15** | Architecture & Bob Story | Architecture highlights | 70/30 Edge + watsonx Granite; Built with Bob |
-| **2:15 – 2:30** | The Bengaluru Vision | Metric chips & Kannada localization | Scalable across BBMP's 8 zones. Call to action. |
+| 0:00 – 0:30 | The problem | Landing screen | People who finish late shifts guess whether the way home is safe |
+| 0:30 – 0:55 | Two routes | Demo 1–2: search types, both routes appear | Shortest vs. safest, with the numbers |
+| 0:55 – 1:25 | No signal | Demo 3–4: walk starts, outage banner | It all keeps working offline |
+| 1:25 – 1:45 | Reaching a haven | Demo 5: arrival | Point people to places that are open and staffed |
+| 1:45 – 2:15 | Honest build story | Corridors, limitations | Real OSM data, built with Bob, what is assumed |
+| 2:15 – 2:30 | What's next | Roadmap | Shift-aware advice, then watsonx |
 
 ---
 
-## 🎙️ Word-for-Word Pitch Script
+## Script
 
-### [0:00 – 0:30] The Hook & The Problem
-*(Presenter stands confidently. Point to the screen showing KAAVALU).*
+### [0:00 – 0:30] The problem
+> "Good evening. This started at a momo stall. My favourite momo vendor told me the part of his day he dreads is the trip home. A worker at a shoe shop told me the same. They work in retail and food service, they close when the shop closes, and nobody gives them a cab.
+>
+> I asked how they decide whether the way home is safe. They look at their shift. They look at the day of the week, because Fridays are later and busier. Then they guess.
+>
+> A maps app does not help. It picks the shortest route, and at 11 pm the shortest route is the unlit lane. So I built **KAAVALU**, which picks the route by how well lit it is and how close it is to a place that is open and staffed, and keeps working with no signal. I built it with IBM Bob."
 
-> "Good evening, judges. Tonight, thousands of women in Bengaluru—tech employees in Whitefield, healthcare workers in Koramangala, and students in Indiranagar—face the exact same anxiety on their commute home:
+### [0:30 – 0:55] Two routes (demo steps 1 and 2)
+*(Press the Pitch button. The search card is spotlighted. Origin and destination type themselves.)*
+
+> "Here is a real walk: Indiranagar Metro to Defence Colony. The shortest route is the red dashed line, 1.5 kilometres, but only 46% of it is lit. The safe route is 1.96 kilometres and 98% lit. That is about six extra minutes.
 >
-> They step off the Namma Metro at 10 PM. Google Maps gives them two options:
-> Take the main road: **17 minutes**.
-> Or take an unlit, deserted cross-cut: **8 minutes**.
+> Unlit walking drops from 832 metres to 39. Across the six corridors I mapped, it drops 82%, from 4.6 kilometres to 0.8, for an average of 4.5 extra minutes. The street geometry and lighting tags are real OpenStreetMap data, not drawings."
+
+### [0:55 – 1:25] No signal (demo steps 3 and 4)
+*(Walk begins. The outage banner appears and the HUD turns red.)*
+
+> "Now the signal drops, like it does under a flyover. Nothing on this screen needed the internet. The routes are stored on the phone. The assistant that reads a distress message in English, Kannada, Hindi or Nepali is a small set of rules, not a cloud model. If the walker stops for three minutes, or strays 35 metres off the route, a 30-second countdown starts and then the siren sounds. The SOS button opens the phone's own SMS app with the location, nearest haven and battery level already written. The user presses send. Nothing is sent without them."
+
+### [1:25 – 1:45] Reaching a haven (demo step 5)
+*(Puck reaches the haven. Chime plays.)*
+
+> "The route points you toward a place that is open: a police station, or somewhere OpenStreetMap tags as 24/7 or emergency. Here it is Healing Hands Clinic. I kept this list short on purpose. A smaller list of places I can stand behind is better than a long one I cannot."
+
+### [1:45 – 2:15] How it was built, and what is honest about it
+> "Bob was my pair programmer. It helped me find a real bug: my 'shortest' route was sometimes not the shortest, because my hand-drawn data had segments shorter than the straight line between their ends, which breaks the search. Fixing that led me to throw out the hand-made data and write a generator that pulls real streets and lighting tags from OpenStreetMap.
 >
-> When you're exhausted, an 8-minute shortcut is tempting. But in Bengaluru, that shortcut means pitch-black alleys, broken streetlights, and zero CCTV. And when you hit a cellular dead zone under a flyover, your GPS app completely dies.
->
-> To solve this, we built **KAAVALU (ಕಾವಲು)**—an offline-first night transit guardian built with **IBM Bob**."
+> That also showed me a limit. Of eight candidate areas, Electronic City and Manyata had no real difference between lit and unlit streets, so I dropped them instead of faking it. And where OpenStreetMap has no lighting tag, I assume main roads are lit and small lanes are not. That is written down in the README. The next step is ground-truth lighting."
+
+### [2:15 – 2:30] What's next
+> "Next is shift-aware advice: closing time and day of the week, so Friday night gets a different answer from Tuesday. After that, IBM watsonx for natural-language help and for summarising lighting reports from the community. KAAVALU means guard. It is for the people who are guarding the city's last hour and have nobody guarding the way home. Thank you."
 
 ---
 
-### [0:30 – 0:50] The Solution & Routing Engine (Demo Steps 1 & 2)
-*(Presenter clicks 'Start Demo' or taps the Pitch button. Stage 1 auto-scrolls and spotlights the Search card).*
+## Judges Q&A
 
-> "Watch what happens on screen. As Priya inputs her commute from **Indiranagar Metro to Defence Colony**, Kaavalu doesn't just look for distance.
->
-> *(Destination finishes typing $\rightarrow$ radar ping sounds $\rightarrow$ Map drops Pin B and reveals both routes)*
->
-> Look at the map: The red dashed line is Dijkstra's shortest path—saving 9 minutes, but cutting through a dark stormwater culvert with only 18% lighting.
->
-> Kaavalu's **Safety-Weighted A* algorithm** automatically rejects the dark shortcut. It routes Priya along the 100% illuminated 100-Feet Road, prioritizing verified open 24/7 havens: an HP petrol bunk, an Apollo pharmacy, and a Bengaluru City Police Chowki."
+### Q1: How do you know a haven is open at 2 am?
+"I only keep police stations and places that OpenStreetMap explicitly tags as 24/7 or emergency-capable. That is a strict filter, and it means some corridors show few havens: Indiranagar has two on the route, Whitefield one, and the other four have none within 85 metres. I would rather show nothing than show a pharmacy that has closed. The next step is community check-ins to confirm hours."
 
----
+### Q2: What happens with no internet?
+"The six corridors are stored in IndexedDB on the phone, and routing, the assistant, stop detection, the siren and the SMS link all run locally. A startup self-check verifies those five parts. The honest gap is the map background: tiles come from OpenStreetMap and are not cached yet, so with no signal the route and markers still work but the street background may be blank. Caching tiles is on the list."
 
-### [0:50 – 1:20] Live Sentinel Walk & Cellular Dead Zone (Demo Steps 3 & 4)
-*(Stage 3 auto-scrolls to the Map. Blue location puck begins walking. SentinelHUD slides down).*
+### Q3: Why is there no watsonx in the build?
+"I chose to ship something that works with no keys, servers or budget, and that does not send a person's location to anyone. The assistant is rule-based on purpose. watsonx is where I would take natural-language understanding and community-report summarising next, behind an explicit opt-in, with the rule-based version kept as the fallback."
 
-> "Priya taps **'Start Safe Walk'**. She puts her phone in her pocket. The **Sentinel HUD** gives turn-by-turn guidance while our dead-man telemetry monitors for sudden stops or deviations.
->
-> *(Stage 4 triggers: Red outage banner activates $\rightarrow$ SentinelHUD turns crimson $\rightarrow$ Copilot sheet opens)*
->
-> Now, a critical scenario strikes: Priya enters a cellular dead zone. **Zero bars. Zero internet.**
->
-> A suspicious auto begins trailing her. Any other app is dead. But Kaavalu operates on a **70/30 offline-first architecture**.
->
-> Running 100% locally on device, our offline AI agent instantly evaluates the threat, alerts Priya via spoken haptics, stages an emergency native SMS to 112 with exact GPS coordinates, and immediately diverts her to the nearest staffed sanctuary: the HP Petrol Oasis 120 meters ahead."
+### Q4: How is the lighting data validated?
+"Partly. Between 0% and 63% of segment length on each corridor has an explicit lit tag in OpenStreetMap; Koramangala has none. Everywhere else it is a rule: main roads and mapped sidewalks are lit, other streets are not. So the 82% figure is only as good as that assumption. I say so in the README, and crowd-verified lighting is the fix."
 
----
+### Q5: What about privacy?
+"Location stays on the device. There is no account and no server. The SOS button never sends anything by itself: it opens the user's own SMS app and the user decides whether to send."
 
-### [1:20 – 1:45] Safe Haven Reached & Threat Neutralized (Demo Step 5)
-*(Puck arrives at HP Petrol Oasis. Confetti explodes. Safety chime rings).*
-
-> "Priya steps into the brightly lit, guarded forecourt of the HP station.
->
-> The threat is neutralized. Confetti fires, the distress alert is stood down, and her emergency contacts are automatically texted: *'Priya has reached HP Petrol Haven safely.'*
->
-> We don't just route people to dead-ends; we route them to **verified human protectors**."
-
----
-
-### [1:45 – 2:15] The Bob Story & Technical Architecture
-*(Presenter gestures to the clean UI and architecture).*
-
-> "How did we build this? **IBM Bob was our pair programmer throughout development.**
->
-> 1. Bob scaffolded our **70/30 architecture**: 70% deterministic offline edge routing using IndexedDB and Dijkstra/A*, and 30% agentic AI powered by **IBM watsonx.ai Granite**.
-> 2. Bob adapted the **IBM Carbon Design System** into modern squircle aesthetics, ensuring high-contrast readability under midnight glare and zero watermarks.
-> 3. Most importantly, Bob engineered our **zero-cost offline fallback**, so Kaavalu requires ₹0 in API costs and zero credit cards to deliver life-saving guardian intelligence."
-
----
-
-### [2:15 – 2:30] The Vision & Conclusion
-*(Presenter clicks the language selector to 'ಕನ್ನಡ' or points to the 8 Bengaluru corridors).*
-
-> "Kaavalu already covers **8 critical tech corridors across Bengaluru**—from Whitefield and Bellandur to Electronic City and Koramangala—fully localized in Kannada, English, Hindi, and Nepali.
->
-> Safer communities build stronger futures. With IBM Bob and Kaavalu, while Bengaluru sleeps, we stand watch.
->
-> Thank you, and we welcome your questions!"
-
----
-
-## 🎯 Judges Q&A Defense Cheat Sheet
-
-### Q1: "How do you verify that safe havens are actually open and safe at 2 AM?"
-* **Answer:** "We partner with structured 24/7 corporate networks: company-operated fuel stations (HP, Shell, BPCL) with illuminated forecourts and armed security, 24/7 pharmacy chains (Apollo, MedPlus) with CCTV, and Bengaluru City Police (BCP) Suraksha posts. In the community portal, haven ratings require verified check-ins, eliminating stale crowd-sourced data."
-
-### Q2: "What happens if there is no internet connection at all?"
-* **Answer:** "Kaavalu is built offline-first. All 8 corridor graphs, safety scores, and haven coordinates are stored locally in IndexedDB (`kaavalu_corridors_v4`). Even in Airplane Mode, our offline neural classifier analyzes distress and calculates sanctuary diversion with 0 bytes transmitted over the network."
-
-### Q3: "Why use IBM watsonx.ai Granite instead of an API call to a general LLM?"
-* **Answer:** "General LLMs are too slow (3-5s latency), hallucinate under stress, and require high bandwidth. Granite-3-8b-instruct allows concise, deterministic situational triage with structured JSON output and low latency. For deployment on municipal devices, Granite can run on-premise or on edge hardware."
-
-### Q4: "What is the privacy impact on the user?"
-* **Answer:** "Zero permanent cloud tracking. GPS telemetry stays on device and is wiped after transit. Our Covert OLED Pocket Mode turns the screen completely pitch black to protect the commuter from being targeted for holding an illuminated phone."
+### Q6: Why not just use Google Maps?
+"It optimises for time. KAAVALU optimises for lighting and nearby open places, and shows the time cost beside it, so the walker can choose with the numbers in front of them."
