@@ -361,7 +361,7 @@ export const App: React.FC = () => {
         }, 3000);
         break;
 
-      case 2: // Step 3: Walking along 100ft Road with Sentinel
+      case 2: // Step 3: Walking the lit corridor with Sentinel
         setSpotlightTarget('walking');
         setTimeout(() => mapSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 60);
 
@@ -395,7 +395,7 @@ export const App: React.FC = () => {
         launchSafeArrivalConfetti();
         sirenService.playSafetyChime();
 
-        setEmergencyToast('✓ Safe Haven Reached: HP Petrol Oasis • Threat Cleared & Emergency Contacts Notified');
+        setEmergencyToast(`✓ Safe Haven Reached: ${BENGALURU_CORRIDORS[0].sanctuaries[0]?.name ?? 'Nearest haven'} • Threat Cleared & Emergency Contacts Notified`);
         setTimeout(() => setEmergencyToast(null), 5500);
         setTimeout(() => activeTabPanelRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 60);
         break;

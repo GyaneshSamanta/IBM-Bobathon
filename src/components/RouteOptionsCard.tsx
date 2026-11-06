@@ -127,7 +127,7 @@ export const RouteOptionsCard: React.FC<RouteOptionsCardProps> = ({
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold text-carbon-red-light flex items-center">
               <AlertTriangle className="w-4 h-4 mr-1.5 text-carbon-red-light" />
-              Unlit Dirt Shortcut
+              Unlit Shortcut
             </span>
             <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-carbon-red/15 text-carbon-red-light border border-carbon-red/25">
               High Risk
@@ -137,7 +137,7 @@ export const RouteOptionsCard: React.FC<RouteOptionsCardProps> = ({
           <div className="flex items-center flex-wrap gap-2">
             <span className="inline-flex items-center text-xs font-semibold px-2.5 py-1 rounded-lg bg-carbon-layer01 border border-carbon-red/30 text-carbon-red-light">
               <Clock className="w-3.5 h-3.5 mr-1" />
-              {shortestRoute.estimatedDurationMinutes} mins (saves 9m)
+              {shortestRoute.estimatedDurationMinutes} mins (saves {Math.max(0, safeRoute.estimatedDurationMinutes - shortestRoute.estimatedDurationMinutes)}m)
             </span>
             <span className="inline-flex items-center text-xs font-medium px-2.5 py-1 rounded-lg bg-carbon-layer01 border border-white/[0.06] text-carbon-textSecondary">
               <MapPin className="w-3.5 h-3.5 mr-1" />
@@ -147,7 +147,7 @@ export const RouteOptionsCard: React.FC<RouteOptionsCardProps> = ({
               Only {shortestRoute.litPercentage}% Lit
             </span>
             <span className="inline-flex items-center text-xs font-medium px-2.5 py-1 rounded-lg bg-carbon-layer01 border border-white/[0.06] text-carbon-textHelper">
-              0 Safe Havens
+              {shortestRoute.sanctuariesAlongRoute.length} Safe {shortestRoute.sanctuariesAlongRoute.length === 1 ? 'Haven' : 'Havens'}
             </span>
           </div>
 
