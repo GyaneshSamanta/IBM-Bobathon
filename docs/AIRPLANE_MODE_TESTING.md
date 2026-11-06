@@ -15,8 +15,9 @@ Open `http://127.0.0.1:4173/` once while online so assets are cached.
 ## 2. DevTools checks (Chrome)
 1. **Console** – confirm the `[KAAVALU SENTINEL SELF-CHECK]` block shows all 5 subsystems operational.
 2. **Application → Service Workers** – `sw.js` is activated; tick **Offline**, reload: the app must still load.
-3. **Application → IndexedDB → keyval-store** – key `kaavalu_corridors_v4` holds **8 corridors**.
-4. **Application → Cache Storage → kaavalu-v1** – `/`, `/index.html`, `/manifest.json` and hashed bundles are present.
+3. **Application → IndexedDB → keyval-store** – key `kaavalu_corridors_v4` holds **6 corridors**.
+4. **Known limitation:** map background tiles are fetched from OpenStreetMap and are not cached by the service worker, so the basemap goes blank offline while the route, HUD, SOS and copilot keep working.
+5. **Application → Cache Storage → kaavalu-v1** – `/`, `/index.html`, `/manifest.json` and hashed bundles are present.
 
 ## 3. In-app demo toggles
 Open **Pitch Presentation & Demo Simulator** → **Show Tools**:
