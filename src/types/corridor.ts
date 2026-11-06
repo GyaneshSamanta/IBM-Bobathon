@@ -42,6 +42,7 @@ export interface RoadSegment {
   surfaceType: 'paved_main' | 'secondary_road' | 'dirt_trail' | 'isolated_underpass';
   speedLimitKmh?: number;
   streetName: string;
+  lightingSource?: 'osm' | 'assumed'; // 'assumed' = no lit=* tag in OpenStreetMap
 }
 
 export interface PublicTransitInfo {
